@@ -1,0 +1,78 @@
+[!] dkspark 초기화 작업
+* config 설정 설명
+    - 시스템 전체 : /etc/gitconfig 
+      $git config --system 
+    - 특정 유저 : ~/.gitconfig
+      $git config --global
+    - 특정 저장소 : .git/config (이것을 사용하도록 함)
+      $git config --local
+    - 설정 보기
+      $git config --list      
+
+* 초기화 순서
+    - $git init dkspark
+    - $git config --local user.name dkcipher  
+      $git config --local user.email dkcipher@gmail.com
+    - $git add 파일
+    - $git commit
+    ------------------------------------------
+    1 DK-001 dkspark 초기화 작업   (제목)
+    2                              (한칸띄고)
+    3 * dkspark 저장소 만들기      (별)
+    4 * ssh 연결                   (별)
+    ------------------------------------------
+    - $git commit --amend (수정)
+
+* github에 저장소 만듬
+    - id/pw 입력 하여 사용
+        https://github.com/dkcipher/dkspark.git
+    - ssh 사용
+        git@github.com:dkcipher/dkspark.git
+
+* ssh 사용
+    - ssh key 생성
+        .ssh 폴더로 이동하여 
+            $ssh-keygen -t rsa -C 'dkcipher@gmail.com'
+            github 등록시 사용된 dkcipher@gmail.com 를 입력한다. 이것이 id 값이 된다.
+        파일명은 id_rsa_dkcipher 로 하자
+
+    - ssh config 파일 설정
+        $touch ~/.ssh/config
+        --------------------------------------------
+        # dkcipher account
+        Host github.com-dkcipher
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_rsa_dkcipher
+
+        # work account
+        Host github.com-work
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_rsa_work
+        --------------------------------------------
+
+    - git config 파일 설정
+        $git remote add origin git@github.com:dkcipher/dkspark.git
+        아래에서 'github.com-dkcipher' 으로 변경
+        ------------------------------------------------------
+        [remote "origin"]
+            url = git@github.com-dkcipher:dkcipher/dkspark.git
+        ------------------------------------------------------
+
+    - github.com 에 공개키 세팅
+
+    - test
+        $ssh -T git@github.com-dkcipher
+        Hi dkcipher! Youve successfully authenticated, but GitHub does not provide shell access.
+
+* github 저장소와 연결
+    - git remote -v
+    - git remote remove 이름
+    - git push -u origin master
+      현재 checkout된 local 저장소의 브랜치를 origin 의 master 브랜치로 연결한다.
+      ( -u는 한번만 사용)
+
+[!] utils
+* ignore
+    - https://www.gitignore.io/
