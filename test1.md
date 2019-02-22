@@ -1,3 +1,10 @@
+안녕하세요. 이것이 일반 사이즈 폰트 크기 입니다
+hi ~ everyon
+If you have ten minutes, you can learn Markdown!
+
+In each lesson, you’ll be given an introduction to a single Markdown concept. Then, you’ll be asked to complete several exercises with that new knowledge.
+
+
 # 헤더 크기 (h1)
 ## 헤더 크기 (h2)
 ### 헤더 크기 (h3)
